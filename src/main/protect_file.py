@@ -14,4 +14,3 @@ def protect_file(file_path):
                 sepa.protect_sepa(document)
 
 
-protect_file('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\camt52.xml')

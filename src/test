@@ -7,7 +7,7 @@ from src.file.SEPA import SEPA
 
 print(fc.get_file_format('data/testfile3.csv'))
 
-document = ET.parse("C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\pain.xml")
+document = ET.parse("C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\example.xml")
 namespac = SEPA.getNamespace(document.getroot())
 print(namespac)
 print(SEPA.is_sepa_format(document))

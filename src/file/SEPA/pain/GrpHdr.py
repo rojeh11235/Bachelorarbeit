@@ -3,10 +3,10 @@ import time
 from src.file.SEPA import SEPA
 
 
-def protect_name(document, nameSpace):
-    for GrpHdr in document.iter("{}GrpHdr".format(nameSpace)):
-        for InitgPty in GrpHdr.iter("{}InitgPty".format(nameSpace)):
-            for name in InitgPty.findall("{}Nm".format(nameSpace)):
+def protect_name(document, namespace):
+    for GrpHdr in document.iter("{}GrpHdr".format(namespace)):
+        for InitgPty in GrpHdr.iter("{}InitgPty".format(namespace)):
+            for name in InitgPty.findall("{}Nm".format(namespace)):
                 name.text = 'Protected_Name'
 
 

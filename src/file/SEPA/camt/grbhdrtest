@@ -1,0 +1,29 @@
+from src.file.SEPA import SEPA
+
+
+def protect_name(document, namespace):
+    for InitgPty in get_initgpty(document, namespace):
+        for name in InitgPty.findall("{}Nm".format(namespace)):
+            name.text = 'xxxxxxx'
+
+
+def protect_adresse(document, namespace):
+    for InitgPty in get_initgpty(document, namespace):
+        for PstlAdr in InitgPty.findall("{}PstlAdr".format(namespace)):
+            for adressLine in PstlAdr.findall("{}AdrLine".format(namespace)):
+                adressLine.text = "xxxxxx"
+
+
+def get_grbhdr(document, namespace):
+    return document.findall("{}GrpHdr".format(namespace))
+
+
+def get_initgpty(document, namespace):
+    for GrpHdr in get_grbhdr(document, namespace):
+        return GrpHdr.findall("{}InitgPty".format(namespace))
+
+
+def protect_GrpHdr(document):
+    namespace = SEPA.getNamespace(document.getroot())
+    protect_name(document, namespace)
+    protect_adresse(document, namespace)
