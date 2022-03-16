@@ -18,7 +18,7 @@ for i in f:
     print(i.text)
 
 # camtg.protect_GrpHdr(document)
-
+print('_________________________________')
 SEPA.protect_sepa(document)
 #camts.get_ntry(document,namespac)
 #camts.get_related_parties(document,namespac)
