@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.08">
+    <BkToCstmrStmt>
+        <GrpHdr>
+            <MsgId>MSG-00001</MsgId>
+            <CreDtTm>2022-02-26T14:00:37Z</CreDtTm>
+            <MsgRcspt>
+                <Nm>Max Mustermann</Nm>
+                <PstlAdr>
+                    <AdrLine>Street 1</AdrLine>
+                    <AdrLine>22000 Stadt</AdrLine>
+                </PstlAdr>
+            </MsgRcspt>
+        </GrpHdr>
+        <GrpHdr>
+            <MsgId>MSG-00001</MsgId>
+            <CreDtTm>2022-02-26T14:00:37Z</CreDtTm>
+            <MsgRcspt>
+                <Nm>Max Mustermann</Nm>
+                <PstlAdr>
+                    <AdrLine>Street 1</AdrLine>
+                    <AdrLine>22000 Stadt</AdrLine>
+                </PstlAdr>
+            </MsgRcspt>
+        </GrpHdr>
+        <Stmt>
+            <Acct>
+                <Id>
+                    <IBAN>DE123456789011</IBAN>
+                    <Othr>...</Othr>
+                </Id>
+                <Type></Type>
+                <Ccy></Ccy>
+                <Nm>Max Mustermann</Nm>
+                <Ownr>
+                    <Nm>Max</Nm>
+                    <PstlAdr>
+                        <AdrLine>Street 2</AdrLine>
+                        <AdrLine>22345 Stadt</AdrLine>
+                    </PstlAdr>
+                    <Id></Id>
+                </Ownr>
+                <Svcr></Svcr>
+            </Acct>
+            <RltdAcc>
+                <Id>
+                    <IBAN>DE123456789011</IBAN>
+                    <Othr>...</Othr>
+                </Id>
+                <Tp></Tp>
+                <Ccy></Ccy>
+                <Nm>Name</Nm>
+            </RltdAcc>
+            <Ntry>
+                <NtryDtls>
+                    <TxDtls>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>Lang, Martina1</Nm>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>IbannnnnnnnnnnnDbtrAcct1</IBAN>
+                                    <Othr>
+                                        <Id>DebitorAccount-00005</Id>
+                                    </Othr>
+                                </Id>
+                            </DbtrAcct>
+                            <Cdtr>
+                                <Nm>Weiß, Gerda1</Nm>
+                            </Cdtr>
+                            <CdtrAcct>
+                                <Id>
+                                    <IBAN>IbannnnnnnnnnnnCdtrAcct1</IBAN>
+                                    <Othr>
+                                        <Id>DebitorAccount-00005</Id>
+                                    </Othr>
+                                </Id>
+                            </CdtrAcct>
+                        </RltdPties>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+            <Ntry>
+                <NtryDtls>
+                    <TxDtls>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>Lang, Martina2</Nm>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>IbannnnnnnnnnnnDbtrAcct2</IBAN>
+                                    <Othr>
+                                        <Id>DebitorAccount-00005</Id>
+                                    </Othr>
+                                </Id>
+                            </DbtrAcct>
+                            <Cdtr>
+                                <Nm>Weiß, Gerda2</Nm>
+                            </Cdtr>
+                            <CdtrAcct>
+                                <Id>
+                                    <IBAN>IbannnnnnnnnnnnCdtrAcct2</IBAN>
+                                    <Othr>
+                                        <Id>DebitorAccount-00005</Id>
+                                    </Othr>
+                                </Id>
+                            </CdtrAcct>
+                        </RltdPties>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+        </Stmt>
+    </BkToCstmrStmt>
+    <BkToCstmrStmt1>
+        <child1>121212</child1>
+        <child2>sdfsd</child2>
+       wetrretretre
+    </BkToCstmrStmt1>
+</Document>
