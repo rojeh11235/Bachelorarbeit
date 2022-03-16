@@ -1,0 +1,24 @@
+import xml.etree.ElementTree as ET
+import src.file.SEPA.camt.Stmt as camts
+import src.file.SEPA.pain.GrpHdr as sepag
+
+import src.file.format_check as fc
+from src.file.SEPA import SEPA
+
+print(fc.get_file_format('data/testfile3.csv'))
+
+document = ET.parse("C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\pain.xml")
+namespac = SEPA.getNamespace(document.getroot())
+print(namespac)
+print(SEPA.is_sepa_format(document))
+print(SEPA.get_Sepa_massage_format(document))
+print(SEPA.get_Sepa_massage_format1(document))
+f = document.findall('{}Document/BkToCstmrStmt/GrpHdr/MsgId'.format(namespac))
+for i in f:
+    print(i.text)
+
+# camtg.protect_GrpHdr(document)
+
+SEPA.protect_sepa(document)
+#camts.get_ntry(document,namespac)
+#camts.get_related_parties(document,namespac)
