@@ -10,11 +10,11 @@ def protect_name(document, nameSpace):
                 name.text = 'xxxxxxx'
 
 
-def protect_adresse(document, nameSpace):
-    for GrpHdr in document.iter("{}GrpHdr".format(nameSpace)):
-        for InitgPty in GrpHdr.iter("{}InitgPty".format(nameSpace)):
-            for PstlAdr in InitgPty.iter("{}PstlAdr".format(nameSpace)):
-                 for adressLine in PstlAdr.findall("{}AdrLine".format(nameSpace)):
+def protect_adresse(document, namespace):
+    for GrpHdr in document.iter("{}GrpHdr".format(namespace)):
+        for MsgRcspt in GrpHdr.findall("{}MsgRcspt".format(namespace)):
+            for PstlAdr in MsgRcspt.findall("{}PstlAdr".format(namespace)):
+                 for adressLine in PstlAdr.findall("{}AdrLine".format(namespace)):
                          adressLine.text = "xxxxxx"
 
 def protect_GrpHdr(document):

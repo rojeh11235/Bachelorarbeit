@@ -36,11 +36,11 @@ def protect_sepa(document):
     format = get_Sepa_massage_format1(document)
     if format == 'pain':
         paing.protect_GrpHdr(document)
-        #painp.protect_PmtInf(document)
+        painp.protect_PmtInf(document)
         document.write(
             '../output/protected_{}_{}.xml'.format(get_Sepa_massage_format(document), time.strftime("%Y%m%d-%H%M%S")))
     elif format == 'camt':
         camtg.protect_GrpHdr(document)
         camtc.protect_stmt(document)
         document.write(
-        '../output/protected_{}_{}.xml'.format(get_Sepa_massage_format(document), time.strftime("%Y%m%d-%H%M%S")))
+        'C:\\NAK\\BachelorArbeit\\Filesprotecter\\output\\protected_{}_{}.xml'.format(get_Sepa_massage_format(document), time.strftime("%Y%m%d-%H%M%S")))

@@ -6,8 +6,8 @@
             <ns0:MsgRcspt>
                 <ns0:Nm>xxxxxxx</ns0:Nm>
                 <ns0:PstlAdr>
-                    <ns0:AdrLine>Street 1</ns0:AdrLine>
-                    <ns0:AdrLine>22000 Stadt</ns0:AdrLine>
+                    <ns0:AdrLine>xxxxxx</ns0:AdrLine>
+                    <ns0:AdrLine>xxxxxx</ns0:AdrLine>
                 </ns0:PstlAdr>
             </ns0:MsgRcspt>
         </ns0:GrpHdr>
@@ -17,8 +17,8 @@
             <ns0:MsgRcspt>
                 <ns0:Nm>xxxxxxx</ns0:Nm>
                 <ns0:PstlAdr>
-                    <ns0:AdrLine>Street 1</ns0:AdrLine>
-                    <ns0:AdrLine>22000 Stadt</ns0:AdrLine>
+                    <ns0:AdrLine>xxxxxx</ns0:AdrLine>
+                    <ns0:AdrLine>xxxxxx</ns0:AdrLine>
                 </ns0:PstlAdr>
             </ns0:MsgRcspt>
         </ns0:GrpHdr>

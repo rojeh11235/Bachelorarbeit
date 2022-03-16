@@ -10,34 +10,10 @@
                      <AdrLine>Street 1</AdrLine>
                     <Country>DE</Country>
                 </PstlAdr>
-                <Id>
-                    <OrgId>
-                        <BICOrBEI>#CSV_BIC_OR_BEI_DBTR#</BICOrBEI>
-                    </OrgId>
-                </Id>
             </InitgPty>
         </GrpHdr>
         <PmtInf>
-            <PmtInfId>MSG-#COUNTER_NEXT_00001#</PmtInfId>
-            <PmtMtd>TRF</PmtMtd>
-            <BtchBookg>false</BtchBookg>
             <NbOfTxs>#NUMBER_OF_REPETITIONS#</NbOfTxs>
-            <CtrlSum>#CSV_AMOUNT#</CtrlSum>
-            <PmtTpInf>
-                <!---individuell vereinbart -->
-                <InstrPrty>HIGH</InstrPrty>
-                <SvcLvl>
-                    <Cd>SEPA</Cd>
-                </SvcLvl>
-                <LclInstrm>
-                    <Cd>INST</Cd>
-                </LclInstrm>
-                <CtgyPurp>
-                    <!---individuell vereinbart -->
-                    <Cd>TREA</Cd>
-                </CtgyPurp>
-            </PmtTpInf>
-            <ReqdExctnDt>#SEPA_DATE_FUTURE#</ReqdExctnDt>
             <Dbtr>
                 <Nm>#CSV_NAME_DBTR#</Nm>
                 <PstlAdr>
@@ -65,13 +41,6 @@
             </DbtrAgt>
             <ChrgBr>SLEV</ChrgBr>
             <CdtTrfTxInf>
-                <PmtId>
-                    <InstrId>INSTRID-#COUNTER_NEXT_00001#</InstrId>
-                    <EndToEndId>E-#COUNTER_00001#</EndToEndId>
-                </PmtId>
-                <Amt>
-                    <InstdAmt Ccy="EUR">#CSV_AMOUNT#</InstdAmt>
-                </Amt>
                 <UltmtDbtr>
                     <Nm>#CSV_ULTIMATE_NAME_DBTR#</Nm>
                     <Id>
