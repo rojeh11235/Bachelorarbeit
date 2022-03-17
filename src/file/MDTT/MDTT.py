@@ -1,5 +1,6 @@
 import csv
 import time
+from src.encryption import rot_47
 
 MDTT = ['Account', 'User', 'Customer']
 
@@ -31,10 +32,10 @@ def protect_mdtt(file_path, column_to_protect):
     writer = csv.writer(file, delimiter=';')
     for row in rows:
         for i in column_to_protect:
-            row[i] = 'xxxx'
+            row[i] = rot_47.rot47(row[i])
         writer.writerow(row)
 
 
-print(make_array_from_csv('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\KONTODATEI.csv')[0][0])
-print(is_MDTT_file('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\KONTODATEI.csv'))
-protect_mdtt('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\TEILNEHMERDATEI.csv', [1, 3])
+#print(make_array_from_csv('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\KONTODATEI.csv')[0][0])
+#print(is_MDTT_file('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\KONTODATEI.csv'))
+#protect_mdtt('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\KONTODATEI.csv', [1, 4])

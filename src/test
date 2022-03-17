@@ -11,8 +11,8 @@ document = ET.parse("C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\example.xml"
 namespac = SEPA.getNamespace(document.getroot())
 print(namespac)
 print(SEPA.is_sepa_format(document))
-print(SEPA.get_Sepa_massage_format(document))
-print(SEPA.get_Sepa_massage_format1(document))
+print(SEPA.get_Sepa_message_format(document))
+print(SEPA.get_Sepa_message_format1(document))
 f = document.findall('{}Document/BkToCstmrStmt/GrpHdr/MsgId'.format(namespac))
 for i in f:
     print(i.text)
