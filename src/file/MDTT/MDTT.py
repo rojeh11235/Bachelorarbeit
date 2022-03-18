@@ -53,5 +53,5 @@ def return_mdtt(file_path, column_to_protect):
 
 #print(make_array_from_csv('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\KONTODATEI.csv')[0][0])
 #print(is_MDTT_file('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\KONTODATEI.csv'))
-protect_mdtt('C:\\NAK\\BachelorArbeit\\Filesprotecter\\output\\protected_mdtt_Account_20220317-212120.csv', [1, 3])
+#protect_mdtt('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\protected_mdtt_Account_20220317-212120.csv', [1, 3])
 #array = make_array_from_csv('C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\KONTODATEI.csv')
