@@ -8,7 +8,7 @@ Swiss Transport International
 :57A:HSHNDEHHXXX
 :59:DE
 :59:/DE77210500001200000021
-Phillip Laschek
+HUGO VORDERBRUECK VON GRAUENSTEIN
 Kapellenaeckerstrasse 3
 80321 Kirchheim
 :70:/INV/1234567890
