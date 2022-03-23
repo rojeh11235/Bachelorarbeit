@@ -1,4 +1,3 @@
-import re
 import time
 
 from src.encryption import rot_47

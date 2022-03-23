@@ -33,11 +33,12 @@ def get_tag_values(message, tag):
         values.append(value.group(0).split('\n'))
     return values
 
+
 def get_tag_values_positions(message, tag):
     pat = "(?<=(:" + str(tag) + ":))((.|\n)*?)(?=\:)"
     Values_positions = []
     for value in re.finditer(pat, message):
-        position =[value.start(),value.end()]
+        position = [value.start(), value.end()]
         Values_positions.append(position)
     return Values_positions
 
@@ -52,10 +53,9 @@ def protect_tag(message, tag):
 
 def protect_tag_with_positions(message, tag):
     for position in get_tag_values_positions(message, tag):
-        for i in range(position[0],position[1]):
+        for i in range(position[0], position[1]):
             message = message[:i] + rot_47.rot47(message[i]) + message[i + 1:]
     return message
-
 
 
 def protect_mt_file(path, tags):
@@ -69,4 +69,3 @@ def protect_mt_file(path, tags):
         if is_tag_exist(message, tag):
             message = protect_tag_with_positions(message, tag)
     protected_file.write(message)
-
