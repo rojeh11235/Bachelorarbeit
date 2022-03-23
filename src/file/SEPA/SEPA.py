@@ -33,13 +33,13 @@ def get_Sepa_message_format1(document):
 
 
 def protect_sepa(document):
-    format = get_Sepa_message_format1(document)
-    if format == 'pain':
+    formate = get_Sepa_message_format1(document)
+    if formate == 'pain':
         paing.protect_GrpHdr(document)
         painp.protect_PmtInf(document)
         document.write(
             '../output/protected_{}_{}.xml'.format(get_Sepa_message_format(document), time.strftime("%Y%m%d-%H%M%S")))
-    elif format == 'camt':
+    elif formate == 'camt':
         camtg.protect_GrpHdr(document)
         camtc.protect_stmt(document)
         document.write(

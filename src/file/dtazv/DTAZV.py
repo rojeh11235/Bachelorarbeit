@@ -30,15 +30,6 @@ def get_tsatz(dtazv):
         print('No Tsatz')
 
 
-def getNonemptyStr(str):
-    firstNonEmptystr = re.search(r"[^\s]+", str).group(0)
-    return firstNonEmptystr
-
-
-def replace_nonempty_str(str, newStr):
-    re.sub(r"[^\s]+", newStr, str)
-
-
 def protect_dtazv(file_path):
     dtazv = open(file_path).read()
     for i in range(11, 23):

@@ -7,75 +7,66 @@ from src.file.swift_mt import data_block
 from src.file.swift_mt import pattern
 
 
-def is_mt_format(massage):
-    return bool(re.match(pattern.basic_header_pat, massage))
+def is_mt_format(message):
+    return bool(re.match(pattern.basic_header_pat, message))
 
 
-def is_tag_exist(massage, tag):
-    return bool(len(re.findall(r":" + str(tag) + ":", massage)) != 0)
+def is_tag_exist(message, tag):
+    return bool(len(re.findall(r":" + str(tag) + ":", message)) != 0)
 
 
-def get_message_type(massage):
-    application_header = aplication_header.get_application_header(massage)
+def get_message_type(message):
+    application_header = aplication_header.get_application_header(message)
     return application_header[4:7]
 
 
-def get_tag_value(massage, tag):
-    datablock = data_block.get_data_block(massage)
+def get_tag_value(message, tag):
+    datablock = data_block.get_data_block(message)
     pat = "(?<=(:" + str(tag) + ":))((.|\n)*?)(?=\:)"
     return re.search(pat, datablock).group(0).split('\n')
 
 
-def get_tag_values(massage, tag):
+def get_tag_values(message, tag):
     pat = "(?<=(:" + str(tag) + ":))((.|\n)*?)(?=\:)"
     values = []
-    for value in re.finditer(pat, massage):
+    for value in re.finditer(pat, message):
         values.append(value.group(0).split('\n'))
     return values
 
-def get_tag_values_positions(massage, tag):
+def get_tag_values_positions(message, tag):
     pat = "(?<=(:" + str(tag) + ":))((.|\n)*?)(?=\:)"
     Values_positions = []
-    for value in re.finditer(pat, massage):
+    for value in re.finditer(pat, message):
         position =[value.start(),value.end()]
         Values_positions.append(position)
     return Values_positions
 
 
-def protect_tag(massage, tag):
-    for value in get_tag_values(massage, tag):
+def protect_tag(message, tag):
+    for value in get_tag_values(message, tag):
         for element in value:
             if element != '':
-                massage = massage.replace(element, rot_47.rot47(element))
-    return massage
+                message = message.replace(element, rot_47.rot47(element))
+    return message
 
 
-def protect_tag_with_positions(massage, tag):
-    for position in get_tag_values_positions(massage, tag):
+def protect_tag_with_positions(message, tag):
+    for position in get_tag_values_positions(message, tag):
         for i in range(position[0],position[1]):
-            massage = massage[:i] + rot_47.rot47(massage[i]) + massage[i + 1:]
-    return massage
+            message = message[:i] + rot_47.rot47(message[i]) + message[i + 1:]
+    return message
 
 
 
 def protect_mt_file(path, tags):
-    massage = open(path).read()
+    message = open(path).read()
     protected_file = open(
-        'C:\\NAK\\BachelorArbeit\\Filesprotecter\\output\\protected_mt_file_{}_{}.mt'.format(get_message_type(massage),
+        'C:\\NAK\\BachelorArbeit\\Filesprotecter\\output\\protected_mt_file_{}_{}.mt'.format(get_message_type(message),
                                                                                              time.strftime(
                                                                                                  "%Y%m%d-%H%M%S")),
         'w', )
     for tag in tags:
-        if is_tag_exist(massage, tag):
-            massage = protect_tag_with_positions(massage, tag)
-    protected_file.write(massage)
+        if is_tag_exist(message, tag):
+            message = protect_tag_with_positions(message, tag)
+    protected_file.write(message)
 
-
-massage = open("C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\mt.mt").read()
-protect_tag_with_positions(massage, 59)
-open(
-    'C:\\NAK\\BachelorArbeit\\Filesprotecter\\output\\protected_mt_file_{}_{}.mt'.format(get_message_type(massage),
-                                                                                         time.strftime(
-                                                                                             "%Y%m%d-%H%M%S")),
-    'w', ).write(massage)
-protect_mt_file("C:\\NAK\\BachelorArbeit\\Filesprotecter\\data\\mt.mt",[59])

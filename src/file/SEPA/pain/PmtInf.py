@@ -2,22 +2,22 @@ from src.file.SEPA import SEPA
 
 
 def protect_debitor(document, namespace):
-    for PmtTpInf in get_pmtinf(document, namespace):
-        for Dbtr in PmtTpInf.findall("{}Dbtr".format(namespace)):
-            protect_postal_adresse(Dbtr, namespace)
-            for name in Dbtr.findall("{}Nm".format(namespace)):
+    for pmttpinf in get_pmtinf(document, namespace):
+        for dbtr in pmttpinf.findall("{}Dbtr".format(namespace)):
+            protect_postal_adresse(dbtr, namespace)
+            for name in dbtr.findall("{}Nm".format(namespace)):
                 name.text = 'protected_name'
-        protect_account(PmtTpInf, "DbtrAcct", namespace)
+        protect_account(pmttpinf, "DbtrAcct", namespace)
 
 
 def protect_creditor(document, namespace):
-    for PmtTpInf in get_pmtinf(document, namespace):
-        for CdtTrfTxInf in PmtTpInf.findall("{}CdtTrfTxInf".format(namespace)):
-            for Cdtr in CdtTrfTxInf.findall("{}Cdtr".format(namespace)):
+    for pmttpinf in get_pmtinf(document, namespace):
+        for cdttrftxinf in pmttpinf.findall("{}CdtTrfTxInf".format(namespace)):
+            for Cdtr in cdttrftxinf.findall("{}Cdtr".format(namespace)):
                 protect_postal_adresse(Cdtr, namespace)
                 for name in Cdtr.findall("{}Nm".format(namespace)):
                     name.text = 'protected_name'
-            protect_account(CdtTrfTxInf, "CdtrAcct", namespace)
+            protect_account(cdttrftxinf, "CdtrAcct", namespace)
 
 
 def protect_postal_adresse(adresse_owner, namespace):

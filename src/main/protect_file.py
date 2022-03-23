@@ -17,7 +17,7 @@ def protect_file(file_path,columns_to_protect, tags_to_protect):
         dtazv.protect_dtazv(file_path)
     elif file_format == 'mt':
         mt.protect_mt_file(file_path, tags_to_protect)
-    elif file_format == 'mdtt':
+    elif file_format == 'csv':
         mdtt.protect_mdtt(file_path, columns_to_protect)
     else:
         print("Not supported format")
