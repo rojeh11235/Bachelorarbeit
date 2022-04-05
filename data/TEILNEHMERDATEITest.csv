@@ -1,0 +1,14 @@
+User;KD001;TL001;;;Ross;Geller;;;;;;;;de;7999999901;7999999901;-;N;N;"{""SAP_GP_ID"":""7999999901""}";N;SET_UP;;UP_TO_DATE;;2021-09-27T18:52
+UserAccountUploadAuth;KD001;TL001;1001430126;280;;;;;2021-09-27T18:52;;;;;;;;;;;;;;;;;
+UserAccountDownloadAuth;KD001;TL001;1001430126;280;;;;2021-09-27T18:52;;;;;;;;;;;;;;;;;;
+UserOrderTypeUpload;KD001;TL001;SCT;N;;N;;N;;Y;N;;;2021-09-27T18:52;;;;;;;;;;;;
+UserOrderTypeUpload;KD001;TL001;AID;N;;N;;N;;Y;N;;;2021-09-27T18:52;;;;;;;;;;;;
+UserOrderTypeDownload;KD001;TL001;STA;;2021-09-27T18:52;;;;;;;;;;;;;;;;;;;;;
+UserOrderTypeDownload;KD001;TL001;VMK;;2021-09-27T18:52;;;;;;;;;;;;;;;;;;;;;
+User;KD001;TL002;;;Phoebe ;Buffay;;;122222222;1111111;;;01.01.1980;;1;ID01;;N;N;;;;;;;2021-09-27T18:52
+UserAccountUploadAuth;KD001;TL002;1001430154;280;;;;;2021-09-27T18:52;;;;;;;;;;;;;;;;;
+UserAccountDownloadAuth;KD001;TL002;1001430154;280;;;;2021-09-27T18:52;;;;;;;;;;;;;;;;;;
+UserOrderTypeUpload;KD001;TL002;SCT;N;;N;;N;;Y;N;;;2021-09-27T18:52;;;;;;;;;;;;
+UserOrderTypeUpload;KD001;TL002;AID;N;;N;;N;;Y;N;;;2021-09-27T18:52;;;;;;;;;;;;
+UserOrderTypeDownload;KD001;TL002;STA;;2021-09-27T18:52;;;;;;;;;;;;;;;;;;;;;
+UserOrderTypeDownload;KD001;TL002;VMK;;2021-09-27T18:52;;;;;;;;;;;;;;;;;;;;;

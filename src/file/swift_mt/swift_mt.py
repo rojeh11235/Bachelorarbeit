@@ -1,7 +1,7 @@
 import re
 import time
 
-import src.encryption.rot_47 as rot_47
+import src.encryption.rot_random as rot_random
 from src.file.swift_mt import aplication_header
 from src.file.swift_mt import data_block
 from src.file.swift_mt import pattern
@@ -43,29 +43,55 @@ def get_tag_values_positions(message, tag):
     return Values_positions
 
 
-def protect_tag(message, tag):
+def protect_tag(message, tag, group_str, group_num, key):
     for value in get_tag_values(message, tag):
         for element in value:
             if element != '':
-                message = message.replace(element, rot_47.rot47(element))
+                message = message.replace(element, rot_random.rot_random(element, group_str, group_num, key))
     return message
 
 
-def protect_tag_with_positions(message, tag):
+def protect_tag_with_positions(message, tag, group_str, group_num, key):
     for position in get_tag_values_positions(message, tag):
         for i in range(position[0], position[1]):
-            message = message[:i] + rot_47.rot47(message[i]) + message[i + 1:]
+            message = message[:i] + rot_random.rot_random(message[i],group_str, group_num, key) + message[i + 1:]
+    return message
+
+def return_tag_with_positions(message, tag, group_str, group_num, key):
+    for position in get_tag_values_positions(message, tag):
+        for i in range(position[0], position[1]):
+            message = message[:i] + rot_random.de_rot_random(message[i],group_str, group_num, key) + message[i + 1:]
     return message
 
 
-def protect_mt_file(path, tags):
+def protect_mt_file(path,output_path, tags, group_str, group_num, key):
     message = open(path).read()
     protected_file = open(
-        'C:\\NAK\\BachelorArbeit\\Filesprotecter\\output\\protected_mt_file_{}_{}.mt'.format(get_message_type(message),
+        '{}/protected_mt_file_{}_{}.mt'.format(output_path,get_message_type(message),
                                                                                              time.strftime(
                                                                                                  "%Y%m%d-%H%M%S")),
         'w', )
     for tag in tags:
         if is_tag_exist(message, tag):
-            message = protect_tag_with_positions(message, tag)
+            message = protect_tag_with_positions(message, tag, group_str, group_num, key)
     protected_file.write(message)
+
+def return_mt_file(path,output_path, tags, group_str, group_num, key):
+    message = open(path).read()
+    protected_file = open(
+        '{}output/mt_file_{}_{}.mt'.format(output_path,get_message_type(message),
+                                                            time.strftime(
+                                                                "%Y%m%d-%H%M%S")),
+        'w', )
+    for tag in tags:
+        if is_tag_exist(message, tag):
+            message = return_tag_with_positions(message, tag, group_str, group_num, key)
+    protected_file.write(message)
+
+#g1=rot_random.random_str_group(False);
+#g2=rot_random.random_numeric_group()
+#protect_mt_file('../../../data//mt.mt', [59],g1,g2, 123 )
+
+#g1= open('../../../output/random_str_group.txt').read()
+#g2= open('../../../output/random_numeric_group.txt').read()
+#return_mt_file('../../../output/protected_mt_file_103_20220325-181503.mt', [59],g1,g2, 123 )

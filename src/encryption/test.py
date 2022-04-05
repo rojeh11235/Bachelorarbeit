@@ -1,14 +1,36 @@
-# GroupHeader
-debitor_name_xpath = "Document\CstmrCdtTrfInitn\InitgPty\Nm"
-debitor_adresse_xpath = "Document\CstmrCdtTrfInitn\InitgPty\PstlAdr\Adrline"  # Adress Line kann mehrmal vorkommen
-# PaymentInformation
-debitor_name_xpath = "Document\CstmrCdtTrfInitn\PmtInf\Dbtr\Nm"
-debitor_adresse_xpath = "Document\CstmrCdtTrfInitn\PmtInf\Dbtr\PstAdr\Adrline"  # Adress Line kann mehrmal vorkommen
-debitor_account = "Document\CstmrCdtTrfInitn\PmtInf\DbtrAcct\Id\IBAN"
-ultimate_debitor_name = "Document\CstmrCdtTrfInitn\PmtInf\CdtTrfTxInf\UltmtDbtr\Nm"
-ultimate_debitor_Adresse = "Document\CstmrCdtTrfInitn\PmtInf\CdtTrfTxInf\UltmtDbtr\PstAdr\Adrline"  # Adress Line kann mehrmal vorkommen
-creditor_name_xpath = "Document\CstmrCdtTrfInitn\PmtInf\CdtTrfTxInf\Cdtr\Nm"
-creditor_adresse_xpath = "Document\CstmrCdtTrfInitn\PmtInf\CdtTrfTxInf\Cdtr\PstAdr\Adrline"  # Adress Line kann mehrmal vorkommen
-creditor_account_xpath = "Document\CstmrCdtTrfInitn\PmtInf\CdtTrfTxInf\CdtrAcct\Id\IBAN"
-ultimate_creditor_name_xpath = "Document\CstmrCdtTrfInitn\PmtInf\CdtTrfTxInf\UltmtCdtr\Nm"
-ultimate_creditor_Adresse_xpath = "Document\CstmrCdtTrfInitn\PmtInf\CdtTrfTxInf\UltmtCDTR\PstAdr\Adrline"  # Adress Line kann mehrmal vorkommen"
+from Crypto.Cipher import AES
+import binascii, os
+
+def encrypt_AES_GCM(msg, secretKey):
+    aesCipher = AES.new(secretKey, AES.MODE_GCM)
+    ciphertext, authTag = aesCipher.encrypt_and_digest(msg)
+    return (ciphertext, aesCipher.nonce, authTag)
+
+def decrypt_AES_GCM(encryptedMsg, secretKey):
+    (ciphertext, nonce, authTag) = encryptedMsg
+    aesCipher = AES.new(secretKey, AES.MODE_GCM, nonce)
+    plaintext = aesCipher.decrypt_and_verify(ciphertext, authTag)
+    return plaintext
+
+secretKey = os.urandom(32)  # 256-bit random encryption key
+print("Encryption key:", binascii.hexlify(secretKey))
+
+
+msg1 = b'Maria Musterfrau'
+msg2 = b'BeethovenStrasse 311'
+msg3 = b'DE37500700240324115500'
+print('Massage :',msg1)
+print( "encryptedMsg", {
+    'ciphertext': binascii.hexlify(encrypt_AES_GCM(msg1, secretKey)[0])
+})
+print('Massage :',msg2)
+print("encryptedMsg", {
+    'ciphertext': binascii.hexlify(encrypt_AES_GCM(msg2, secretKey)[0])
+})
+print('Massage :',msg3)
+print("encryptedMsg", {
+    'ciphertext': binascii.hexlify(encrypt_AES_GCM(msg2, secretKey)[0])
+})
+
+
+

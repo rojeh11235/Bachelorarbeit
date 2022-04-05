@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+    <CstmrCdtTrfInitn>
+        <GrpHdr>
+            <MsgId>MSG-00001</MsgId>
+            <CreDtTm>2022-04-01T13:38:03Z</CreDtTm>
+            <NbOfTxs>1</NbOfTxs>
+            <CtrlSum>104.40</CtrlSum>
+            <InitgPty>
+                <Nm>Phoebe Buffay</Nm>
+                <Id>
+                    <OrgId>
+                        <BICOrBEI>HSHNDEHH</BICOrBEI>
+                    </OrgId>
+                </Id>
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf>
+            <PmtInfId>MSG-00002</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            <BtchBookg>false</BtchBookg>
+            <NbOfTxs>1</NbOfTxs>
+            <CtrlSum>104.40</CtrlSum>
+            <PmtTpInf>
+                <InstrPrty>HIGH</InstrPrty>
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                </SvcLvl>
+                <LclInstrm>
+                    <Cd>INST</Cd>
+                </LclInstrm>
+                <CtgyPurp>
+                    
+                    <Cd>TREA</Cd>
+                </CtgyPurp>
+            </PmtTpInf>
+            <ReqdExctnDt>2022-04-08</ReqdExctnDt>
+            <Dbtr>
+                <Nm>Phoebe Buffay</Nm>
+                <PstlAdr>
+                    <Ctry>DE</Ctry>
+                    <AdrLine>Strasse 1</AdrLine>
+                    <AdrLine>22803 Hamburg</AdrLine>
+                </PstlAdr>
+                <Id>
+                    <OrgId>
+                        <BICOrBEI>HSHNDEHHXXX</BICOrBEI>
+                    </OrgId>
+                </Id>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <IBAN>DE77210500001200000021</IBAN>
+                </Id>
+                <Ccy>EUR</Ccy>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    
+                    <BIC>HSHNDEHHXXX</BIC>
+                </FinInstnId>
+            </DbtrAgt>
+            <ChrgBr>SLEV</ChrgBr>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>INSTRID-00003</InstrId>
+                    <EndToEndId>E-00003</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="EUR">104.40</InstdAmt>
+                </Amt>
+                <UltmtDbtr>
+                    <Nm>Phillip Laschek</Nm>
+                    <Id>
+                        <OrgId>
+                            <Othr>
+                                <Id>ULTIMATE-ID000001</Id>
+                                <SchmeNm>
+                                    <Cd>TX-00004</Cd>
+                                </SchmeNm>
+                                <Issr>546-876-345</Issr>
+                            </Othr>
+                        </OrgId>
+                    </Id>
+                </UltmtDbtr>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BIC>LOEBDEBBXXX</BIC>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>Schulte, Ilse</Nm>
+                    <PstlAdr>
+                        <Ctry>DE</Ctry>
+                        <AdrLine>Rue Apoell 92</AdrLine>
+                        <AdrLine>4357 Genf</AdrLine>
+                    </PstlAdr>
+                    <Id>
+                        <OrgId>
+                            <Othr>
+                                <Id>LOEBDEBBXXX</Id>
+                                <SchmeNm>
+                                    <Cd>TX-00005</Cd>
+                                </SchmeNm>
+                                <Issr>987-236-910</Issr>
+                            </Othr>
+                        </OrgId>
+                    </Id>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <IBAN>DE36100305000001993000</IBAN>
+                    </Id>
+                </CdtrAcct>
+                <Purp>
+                    <Cd>TREA</Cd>
+                </Purp>
+                <RmtInf>
+                    <Ustrd>SEPA-SAMMLER-EinzelZahlung-Verwendungszweck-TF013</Ustrd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+    </CstmrCdtTrfInitn>
+</Document>

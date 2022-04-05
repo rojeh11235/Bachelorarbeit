@@ -1,10 +1,11 @@
 import re
 import time
-
-import src.file.SEPA.camt.GrpHdr as camtg
+import xml.etree.ElementTree as ET
+from src.encryption import rot_random
 import src.file.SEPA.camt.Stmt as camtc
 import src.file.SEPA.pain.GrpHdr as paing
 import src.file.SEPA.pain.PmtInf as painp
+from src.file.SEPA.camt import GrpHdr
 
 
 def getNamespace(element):
@@ -12,7 +13,8 @@ def getNamespace(element):
     return m.group(0) if m else ''
 
 
-def is_sepa_format(document):
+def is_sepa_format(path):
+    document = ET.parse(path)
     return getNamespace(document.getroot()).__contains__('urn:iso:std:iso:20022:tech:xsd:')
 
 
@@ -32,15 +34,26 @@ def get_Sepa_message_format1(document):
         return 'this Format is not supported'
 
 
-def protect_sepa(document):
+def protect_sepa(path, output_path, group_str, group_num, key):
+    document = ET.parse(path)
     formate = get_Sepa_message_format1(document)
     if formate == 'pain':
-        paing.protect_GrpHdr(document)
-        painp.protect_PmtInf(document)
+        paing.protect_GrpHdr(document, group_str, group_num, key)
+        painp.protect_PmtInf(document, group_str, group_num, key)
         document.write(
-            '../output/protected_{}_{}.xml'.format(get_Sepa_message_format(document), time.strftime("%Y%m%d-%H%M%S")))
+            '{}/protected_{}_{}.xml'.format(output_path, get_Sepa_message_format(document),
+                                                   time.strftime("%Y%m%d-%H%M%S")))
     elif formate == 'camt':
-        camtg.protect_GrpHdr(document)
-        camtc.protect_stmt(document)
+        GrpHdr.protect_GrpHdr(document, group_str, group_num, key)
+        camtc.protect_stmt(document, group_str, group_num, key)
         document.write(
-        'C:\\NAK\\BachelorArbeit\\Filesprotecter\\output\\protected_{}_{}.xml'.format(get_Sepa_message_format(document), time.strftime("%Y%m%d-%H%M%S")))
+            '{}/protected_{}_{}.xml'.format(output_path, get_Sepa_message_format(document),
+                                                   time.strftime("%Y%m%d-%H%M%S")))
+
+# g1 = rot_random.random_str_group(False)
+# g2 = rot_random.random_numeric_group()
+# protect_sepa('../../../data/oain1.xml', g1, g2, 12)
+
+# g1= open('../../../output/random_str_group.txt').read()
+# g2= open('../../../output/random_numeric_group.txt').read()
+# protect_sepa('../../../output/protected_mt_file_103_20220325-181503.mt', [59],g1,g2, 123 )
